@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
+import slide1 from '../assets/slide1.jpg';
+import slide2 from '../assets/slide2.jpg';
 
-// Placeholder images for each year (replace with actual images if available)
-const yearImages = {
-  2016: 'https://via.placeholder.com/200x200?text=2016',
-  2017: 'https://via.placeholder.com/200x200?text=2017',
-  2018: 'https://via.placeholder.com/200x200?text=2018',
-  2019: 'https://via.placeholder.com/200x200?text=2019',
-  2020: 'https://via.placeholder.com/200x200?text=2020',
-  2021: 'https://via.placeholder.com/200x200?text=2021',
+// Define consistent competition images
+const competitionImages = {
+  'Formula Hybrid': slide1,
+  'Formula Imperial': slide2,
 };
 
 function Achievements() {
   const [selectedYear, setSelectedYear] = useState(2021);
   const [isAnimating, setIsAnimating] = useState(false);
-  
+  const [hoveredAward, setHoveredAward] = useState(null);
+
   // Group achievements by year
   const achievementsData = {
     2016: [
@@ -43,7 +42,7 @@ function Achievements() {
       { competition: "Formula Hybrid", award: "Podium Finish" },
     ],
   };
-  
+
   const years = Object.keys(achievementsData).sort((a, b) => b - a);
 
   const handleYearChange = (year) => {
@@ -54,18 +53,61 @@ function Achievements() {
     }, 300);
   };
 
+  const renderImages = (year) => {
+    if (year === '2019') {
+      return (
+        <div className="flex flex-col space-y-4 w-96">
+          <div className="relative group">
+            <img 
+              src={competitionImages['Formula Imperial']}
+              alt="Formula Imperial"
+              className="w-full h-48 object-cover rounded-lg border-4 border-green-500 shadow-md transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="text-white text-xl font-bold">Formula Imperial</span>
+            </div>
+          </div>
+          <div className="relative group">
+            <img 
+              src={competitionImages['Formula Hybrid']}
+              alt="Formula Hybrid"
+              className="w-full h-48 object-cover rounded-lg border-4 border-green-500 shadow-md transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span className="text-white text-xl font-bold">Formula Hybrid</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const competition = achievementsData[year][0].competition;
+    return (
+      <div className="relative group w-96">
+        <img 
+          src={competitionImages[competition]}
+          alt={competition}
+          className="w-full h-96 object-cover rounded-lg border-4 border-green-500 shadow-md transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="text-white text-xl font-bold">{competition}</span>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="h-full w-full pt-20 overflow-y-auto bg-gray-900">
+    <div className="min-h-screen w-full pt-20 bg-gray-900">
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-4xl font-bold text-center mb-6">
           <span className="text-green-500">OUR</span>
           <span className="ml-2 text-orange-500">ACHIEVEMENTS</span>
         </h2>
-        
+
         <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12">
           Over the years, Hybrutos Racing has garnered numerous accolades in prestigious competitions.
         </p>
-        
+
         {/* Year selector */}
         <div className="flex justify-center mb-8 bg-gray-800 rounded-full p-2 max-w-xl mx-auto shadow-lg shadow-green-500/10">
           {years.map((year) => (
@@ -84,17 +126,18 @@ function Achievements() {
         </div>
 
         {/* Rectangular card for selected year */}
-        <div className={`flex flex-col md:flex-row items-center justify-center bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8 w-full px-4 mb-12 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}> 
-          <img 
-            src={yearImages[selectedYear]} 
-            alt={`Achievements for ${selectedYear}`} 
-            className="w-48 h-48 object-cover rounded-lg mb-6 md:mb-0 md:mr-8 border-4 border-green-500 shadow-md"
-          />
-          <div className="flex-1">
+        <div className={`flex flex-col md:flex-row items-start justify-center bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-8 w-full px-4 mb-12 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+          {renderImages(selectedYear.toString())}
+          <div className="flex-1 md:ml-8 mt-6 md:mt-0">
             <h3 className="text-2xl font-bold text-green-400 mb-4">{selectedYear} Awards</h3>
             <ul className="space-y-3">
               {achievementsData[selectedYear].map((achievement, idx) => (
-                <li key={idx} className="bg-gray-900 rounded-md p-4 border border-gray-700 flex items-center">
+                <li 
+                  key={idx} 
+                  className="bg-gray-900 rounded-md p-4 border border-gray-700 flex items-center transform transition-all duration-300 hover:scale-105 hover:border-green-500 hover:shadow-lg hover:shadow-green-500/20"
+                  onMouseEnter={() => setHoveredAward(idx)}
+                  onMouseLeave={() => setHoveredAward(null)}
+                >
                   <span className="inline-block w-8 h-8 bg-orange-500 text-white font-bold rounded-full flex items-center justify-center mr-4">{idx + 1}</span>
                   <div>
                     <div className="font-semibold text-white">{achievement.competition}</div>

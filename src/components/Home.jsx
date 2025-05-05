@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import slide1 from '../assets/slide1.jpg';
 import slide2 from '../assets/slide2.jpg';
@@ -28,6 +30,12 @@ function Home() {
   ];
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true
+    });
+
     const handleScroll = () => {
       const position = window.scrollY;
       setScrollPosition(position);
@@ -55,12 +63,9 @@ function Home() {
 
   return (
     <div className="relative h-full w-full overflow-hidden pt-20">
-      {/* Background track effect */}
+      {/* Background effect */}
       <div className="absolute inset-0 bg-gray-900">
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
-        <div className="absolute left-0 bottom-24 w-full h-8 bg-green-500/30"></div>
-        <div className="absolute left-0 bottom-32 w-full h-1 bg-white"></div>
-        <div className="absolute left-0 bottom-40 w-full h-1 bg-white"></div>
       </div>
 
       {/* Slideshow */}
@@ -98,85 +103,108 @@ function Home() {
         </div>
       </div>
 
-      {/* Introduction Section */}
+      {/* Introduction Section - Enhanced with animations */}
       <div className="relative z-20 bg-gradient-to-b from-transparent to-gray-900 pt-20 pb-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tighter">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-6xl md:text-7xl font-extrabold mb-12 tracking-tighter text-center"
+                data-aos="fade-down"
+                data-aos-delay="200">
               <span className="text-orange-500">HYBR</span>
               <span className="text-white">UTOS</span>
               <span className="text-green-500 ml-2">RACING</span>
             </h1>
 
-            <div className="bg-gray-800/60 backdrop-blur-sm p-8 rounded-lg border border-gray-700 transform transition-all duration-300 hover:scale-[1.02] hover:border-green-500 hover:shadow-lg hover:shadow-green-500/20">
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Welcome to Hybrutos Racing, where innovation meets speed. As a premier racing team at SRM University,
-                Chennai, we're not just building cars – we're crafting the future of sustainable motorsports.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Our team of passionate engineering students combines cutting-edge technology with environmental
-                consciousness to create high-performance hybrid vehicles that push the boundaries of what's possible
-                in the world of racing.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Join us on this exciting journey as we accelerate towards a greener, more efficient future in
-                motorsports, one innovation at a time.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1" data-aos="fade-right" data-aos-delay="400">
+                <p className="text-gray-200 text-xl leading-relaxed mb-8">
+                  Welcome to Hybrutos Racing, where innovation meets speed at SRM University, Chennai. As a premier student racing team, we're pioneering the future of sustainable motorsports by combining cutting-edge engineering with environmental consciousness. Our mission is to push the boundaries of hybrid technology while nurturing the next generation of automotive innovators.
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                  <button 
+                    onClick={() => document.getElementById('achievements').scrollIntoView({ behavior: 'smooth' })} 
+                    className="bg-gradient-to-r from-green-600 to-green-500 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
+                    data-aos="fade-up"
+                    data-aos-delay="600">
+                    Our Achievements
+                  </button>
+                  <button 
+                    onClick={() => document.getElementById('sponsors').scrollIntoView({ behavior: 'smooth' })} 
+                    className="bg-gradient-to-r from-orange-600 to-orange-500 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
+                    data-aos="fade-up"
+                    data-aos-delay="700">
+                    Meet Our Sponsors
+                  </button>
+                </div>
+              </div>
+
+              <div className="order-1 lg:order-2 flex justify-center" data-aos="fade-left" data-aos-delay="400">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-orange-500/20 rounded-full blur-3xl"></div>
+                  <img 
+                    src={slide1} 
+                    alt="Racing Car" 
+                    className="w-full max-w-lg h-auto rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      
-      {/* Content Section */}
-      <div className="container mx-auto px-4 pt-16 md:pt-24 relative z-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tighter">
-            <span className="text-orange-500">HYBR</span>
-            <span className="text-white">UTOS</span>
-            <span className="text-green-500 ml-2">RACING</span>
-          </h1>
+      {/* Professional Content Section - Reimagined */}
+      <div className="container mx-auto px-4 pt-24 pb-32 relative z-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Innovation Section */}
+            <div className="text-center transform hover:scale-105 transition-all duration-300" 
+                 data-aos="fade-up" 
+                 data-aos-delay="200">
+              <div className="relative mb-6 group">
+                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-green-500 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 bg-green-500/10 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+              </div>
+              <h3 className="text-2xl font-bold text-green-400 mb-4">Innovation</h3>
+              <p className="text-gray-300 text-lg">Pioneering hybrid technology solutions that define the future of racing</p>
+            </div>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-10">
-            Engineering Excellence in Hybrid Racing
-          </p>
+            {/* Technology Section */}
+            <div className="text-center transform hover:scale-105 transition-all duration-300" 
+                 data-aos="fade-up" 
+                 data-aos-delay="400">
+              <div className="relative mb-6 group">
+                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-orange-500/20 to-orange-500/10 rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-orange-500 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 bg-orange-500/10 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+              </div>
+              <h3 className="text-2xl font-bold text-orange-400 mb-4">Technology</h3>
+              <p className="text-gray-300 text-lg">Cutting-edge systems designed for maximum performance and efficiency</p>
+            </div>
 
-          <div className="grid grid-cols-1 gap-8 mb-12">
-            <div className="bg-gray-800/60 backdrop-blur-sm p-8 rounded-lg border border-gray-700 transform transition-all duration-300 hover:scale-105 hover:border-green-500 hover:shadow-lg hover:shadow-green-500/20">
-              <h2 className="text-3xl font-bold mb-6 text-green-400">Our Vision</h2>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                At Hybrutos Racing, we're not just building cars – we're crafting the future of sustainable motorsports.
-                As a premier racing team at SRM University, Chennai, we combine cutting-edge engineering with environmental
-                consciousness to create high-performance hybrid vehicles that push the boundaries of what's possible.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Our team of dedicated engineering students works tirelessly to innovate and perfect hybrid technology,
-                participating in prestigious international competitions that test both our technical prowess and our
-                commitment to sustainable racing solutions.
-              </p>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Join us on this exciting journey as we accelerate towards a greener, more efficient future in motorsports,
-                one innovation at a time.
-              </p>
+            {/* Sustainability Section */}
+            <div className="text-center transform hover:scale-105 transition-all duration-300" 
+                 data-aos="fade-up" 
+                 data-aos-delay="600">
+              <div className="relative mb-6 group">
+                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-green-500/20 to-green-500/10 rounded-full flex items-center justify-center">
+                  <svg className="w-10 h-10 text-green-500 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 bg-green-500/10 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+              </div>
+              <h3 className="text-2xl font-bold text-green-400 mb-4">Sustainability</h3>
+              <p className="text-gray-300 text-lg">Committed to eco-friendly racing solutions for a greener tomorrow</p>
             </div>
           </div>
-
-          <button
-            onClick={() => document.getElementById('achievements').scrollIntoView({ behavior: 'smooth' })}
-            className="bg-green-500 text-white px-8 py-3 rounded-full font-medium shadow-lg shadow-green-500/30 hover:bg-green-600 transition-all duration-300 transform hover:scale-105"
-          >
-            Explore Our Achievements
-          </button>
-        </div>
-      </div>
-
-      {/* Speedometer */}
-      <div className="absolute bottom-8 right-8 w-24 h-24 rounded-full bg-gray-800 border-4 border-gray-700 flex items-center justify-center overflow-hidden z-30">
-        <div className="w-1 h-10 bg-red-500 absolute bottom-12 transform origin-bottom rotate-45 transition-transform duration-1000"></div>
-        <div className="text-xs text-center">
-          <span className="text-green-500 font-mono font-bold">HYBRUTOS</span>
-          <br />
-          <span className="text-orange-500 font-mono">RACING</span>
         </div>
       </div>
     </div>
