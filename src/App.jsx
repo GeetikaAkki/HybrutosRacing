@@ -33,22 +33,21 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="bg-gray-900 text-white">
+      <div className="bg-gray-900 text-white min-h-screen">
         <Navbar activeSection={activeSection} />
-        <div className="snap-y snap-mandatory h-screen overflow-y-scroll">
-        <section id="home" className="snap-start h-screen w-full relative z-0">
-  <Home />
-</section>
-<section id="sponsors" className="snap-start h-screen w-full relative z-0">
-  <Sponsors />
-</section>
-<section id="achievements" className="snap-start h-screen w-full relative z-0">
-  <Achievements />
-</section>
-<section id="contact" className="snap-start h-screen w-full relative z-0">
-  <ContactUs />
-</section>
-
+        <div className="overflow-y-auto">
+          <section id="home" className="min-h-screen w-full">
+            <Home />
+          </section>
+          <section id="sponsors" className="min-h-screen w-full">
+            <Sponsors />
+          </section>
+          <section id="achievements" className="min-h-screen w-full">
+            <Achievements />
+          </section>
+          <section id="contact" className="min-h-screen w-full">
+            <ContactUs />
+          </section>
         </div>
       </div>
     </BrowserRouter>
