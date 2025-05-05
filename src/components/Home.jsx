@@ -99,7 +99,7 @@ function Home() {
       </div>
 
       {/* Introduction Section */}
-      <div className="relative z-10 bg-gradient-to-b from-transparent to-gray-900 pt-20 pb-16">
+      <div className="relative z-20 bg-gradient-to-b from-transparent to-gray-900 pt-20 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tighter">
@@ -129,7 +129,7 @@ function Home() {
 
       
       {/* Content Section */}
-      <div className="container mx-auto px-4 pt-16 md:pt-24 relative z-10">
+      <div className="container mx-auto px-4 pt-16 md:pt-24 relative z-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tighter">
             <span className="text-orange-500">HYBR</span>
@@ -171,7 +171,7 @@ function Home() {
       </div>
 
       {/* Speedometer */}
-      <div className="absolute bottom-8 right-8 w-24 h-24 rounded-full bg-gray-800 border-4 border-gray-700 flex items-center justify-center overflow-hidden z-10">
+      <div className="absolute bottom-8 right-8 w-24 h-24 rounded-full bg-gray-800 border-4 border-gray-700 flex items-center justify-center overflow-hidden z-30">
         <div className="w-1 h-10 bg-red-500 absolute bottom-12 transform origin-bottom rotate-45 transition-transform duration-1000"></div>
         <div className="text-xs text-center">
           <span className="text-green-500 font-mono font-bold">HYBRUTOS</span>
