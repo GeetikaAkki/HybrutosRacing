@@ -135,10 +135,10 @@ function ContactUs() {
             <div className="bg-gray-800/60 backdrop-blur-sm p-6 rounded-lg border border-gray-700">
               <h3 className="text-2xl font-bold mb-4 text-green-400">Follow Us</h3>
               <div className="flex justify-center space-x-8">
-                <a href="#" className="text-white hover:text-green-400 transition-colors transform hover:scale-110">
+                <a href="https://www.instagram.com/hybrutosracing/" className="text-white hover:text-green-400 transition-colors transform hover:scale-110" target="_blank" rel="noopener noreferrer">
                   <FaInstagram className="w-8 h-8" />
                 </a>
-                <a href="#" className="text-white hover:text-green-400 transition-colors transform hover:scale-110">
+                <a href="https://www.linkedin.com/company/hybrutos-racing/" className="text-white hover:text-green-400 transition-colors transform hover:scale-110" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="w-8 h-8" />
                 </a>
                 <a href="#" className="text-white hover:text-green-400 transition-colors transform hover:scale-110">

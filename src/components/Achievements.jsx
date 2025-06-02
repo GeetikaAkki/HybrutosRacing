@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
 import slide1 from '../assets/slide1.jpg';
 import slide2 from '../assets/slide2.jpg';
+import slide3 from '../assets/slide3.jpg';
+import op1 from '../assets/op1.jpg';
+import op2 from '../assets/op2.jpg';
+import op3 from '../assets/op3.jpg';
+import fhl from '../assets/fhl.png';
+import fil from '../assets/fil.png';
 
 // Define consistent competition images
 const competitionImages = {
-  'Formula Hybrid': slide1,
-  'Formula Imperial': slide2,
+  'Formula Hybrid': fhl,
+  'Formula Imperial': fil,
 };
 
 function Achievements() {
@@ -59,39 +65,54 @@ function Achievements() {
         <div className="flex flex-col space-y-4 w-96">
           <div className="relative group">
             <img 
-              src={competitionImages['Formula Imperial']}
-              alt="Formula Imperial"
+              src={slide1}
+              alt="2019 Slide 1"
               className="w-full h-48 object-cover rounded-lg border-4 border-green-500 shadow-md transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="text-white text-xl font-bold">Formula Imperial</span>
-            </div>
           </div>
           <div className="relative group">
             <img 
-              src={competitionImages['Formula Hybrid']}
-              alt="Formula Hybrid"
+              src={op1}
+              alt="2019 Op 1"
               className="w-full h-48 object-cover rounded-lg border-4 border-green-500 shadow-md transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="text-white text-xl font-bold">Formula Hybrid</span>
-            </div>
           </div>
         </div>
       );
     }
-
-    const competition = achievementsData[year][0].competition;
+    let image, alt;
+    switch (year) {
+      case '2021':
+        image = slide1;
+        alt = '2021 Slide 1';
+        break;
+      case '2020':
+        image = slide2;
+        alt = '2020 Slide 2';
+        break;
+      case '2018':
+        image = op2;
+        alt = '2018 Op 2';
+        break;
+      case '2017':
+        image = op1;
+        alt = '2017 Op 1';
+        break;
+      case '2016':
+        image = op3;
+        alt = '2016 Op 3';
+        break;
+      default:
+        image = slide3;
+        alt = 'Default Slide 3';
+    }
     return (
       <div className="relative group w-96">
         <img 
-          src={competitionImages[competition]}
-          alt={competition}
+          src={image}
+          alt={alt}
           className="w-full h-96 object-cover rounded-lg border-4 border-green-500 shadow-md transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="text-white text-xl font-bold">{competition}</span>
-        </div>
       </div>
     );
   };
@@ -138,7 +159,13 @@ function Achievements() {
                   onMouseEnter={() => setHoveredAward(idx)}
                   onMouseLeave={() => setHoveredAward(null)}
                 >
-                  <span className="inline-block w-8 h-8 bg-orange-500 text-white font-bold rounded-full flex items-center justify-center mr-4">{idx + 1}</span>
+                  <span className="inline-block w-8 h-8 rounded-full flex items-center justify-center mr-4 bg-white">
+                    <img
+                      src={competitionImages[achievement.competition]}
+                      alt={achievement.competition}
+                      className="w-8 h-8 object-contain rounded-full"
+                    />
+                  </span>
                   <div>
                     <div className="font-semibold text-white">{achievement.competition}</div>
                     <div className="text-green-400">{achievement.award}</div>

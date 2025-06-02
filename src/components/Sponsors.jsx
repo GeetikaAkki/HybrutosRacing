@@ -7,6 +7,7 @@ import wilwoodLogo from '../assets/wilwood.jpeg';
 import continentalLogo from '../assets/continental.png';
 import axicutLogo from '../assets/axicut.jpg';
 import braidLogo from '../assets/braid.png';
+import onlyscrewsLogo from '../assets/onlyscrewsLogo.jpg';
 
 function Sponsors() {
   const [hoveredSponsor, setHoveredSponsor] = useState(null);
@@ -20,6 +21,7 @@ function Sponsors() {
     { id: 6, name: "Continental AG", logo: continentalLogo, tier: "Platinum", url: "https://www.continental.com/" },
     { id: 7, name: "Axicut", logo: axicutLogo, tier: "Bronze", url: "https://www.axicut.com/" },
     { id: 8, name: "Braid", logo: braidLogo, tier: "Bronze", url: "https://www.braid.es/" },
+    { id: 9, name: "OnlyScrews", logo: onlyscrewsLogo, tier: "Silver", url: "https://onlyscrews.in" },
   ];
 
   const tierColors = {
