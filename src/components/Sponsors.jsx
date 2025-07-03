@@ -8,20 +8,21 @@ import continentalLogo from '../assets/continental.png';
 import axicutLogo from '../assets/axicut.jpg';
 import braidLogo from '../assets/braid.png';
 import onlyscrewsLogo from '../assets/onlyscrewsLogo.jpg';
+import ansysLogo from '../assets/an.png';
+import swLogo from '../assets/sws.png';
 
 function Sponsors() {
   const [hoveredSponsor, setHoveredSponsor] = useState(null);
 
   const sponsors = [
-    { id: 1, name: "Teijin", logo: teijinLogo, tier: "Platinum", url: "https://www.teijin.com/" },
-    { id: 2, name: "Bussmann", logo: bussmannLogo, tier: "Gold", url: "https://www.eaton.com/" },
-    { id: 3, name: "Gigavac", logo: gigavacLogo, tier: "Silver", url: "https://www.gigavac.com/" },
-    { id: 4, name: "K&N Engineering", logo: knLogo, tier: "Gold", url: "https://www.knfilters.com/" },
-    { id: 5, name: "Wilwood", logo: wilwoodLogo, tier: "Silver", url: "https://www.wilwood.com/" },
-    { id: 6, name: "Continental AG", logo: continentalLogo, tier: "Platinum", url: "https://www.continental.com/" },
-    { id: 7, name: "Axicut", logo: axicutLogo, tier: "Bronze", url: "https://www.axicut.com/" },
-    { id: 8, name: "Braid", logo: braidLogo, tier: "Bronze", url: "https://www.braid.es/" },
-    { id: 9, name: "OnlyScrews", logo: onlyscrewsLogo, tier: "Silver", url: "https://onlyscrews.in" },
+
+    { id: 1, name: "Axicut", logo: axicutLogo, tier: "Gold", url: "https://www.axicut.com/" },
+    { id: 2, name: "OnlyScrews", logo: onlyscrewsLogo, tier: "Silver", url: "https://onlyscrews.in" },
+    { id: 3, name: "Ansys", logo: ansysLogo, tier: "Bronze", url: "https://www.ansys.com/" },
+    { id: 4, name: "SW", logo: swLogo, tier: "Bronze", url: "https://www.solidworks.com/" },
+
+    
+
   ];
 
   const tierColors = {
