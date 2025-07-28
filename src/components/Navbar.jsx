@@ -53,6 +53,17 @@ function Navbar({ activeSection }) {
                 </button>
               </li>
             ))}
+            {/* Brochure download link */}
+            <li className="flex items-center">
+              <a
+                href="/Brochure.pdf"
+                download
+                className="relative px-1 py-2 font-medium capitalize transition-all duration-300 text-white hover:text-green-400 flex items-center"
+                style={{ lineHeight: 'normal' }}
+              >
+                Brochure
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -72,6 +83,16 @@ function Navbar({ activeSection }) {
                   </button>
                 </li>
               ))}
+              {/* Brochure download link for mobile */}
+              <li>
+                <a
+                  href="/Brochure.pdf"
+                  download
+                  className="block w-full text-left px-4 py-2 rounded-md font-medium capitalize text-white hover:bg-green-500/20"
+                >
+                  Brochure
+                </a>
+              </li>
             </ul>
           </div>
         )}
